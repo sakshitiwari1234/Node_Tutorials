@@ -1,0 +1,13 @@
+restful api is one of the api that have some standards and rules.
+
+
+we have one clinet and one server.
+
+
+this client can be anyone  - either browser , mobile or alexa.
+
+client send a request adn server sends a respoonse to clinet.
+
+
+
+

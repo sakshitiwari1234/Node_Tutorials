@@ -1,0 +1,8 @@
+# 
+node_modules/
+
+
+
+# this file ignores all the temporary files and prevents it from adding in our local verson system
+
+

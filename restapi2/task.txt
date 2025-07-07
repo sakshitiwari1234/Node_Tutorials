@@ -1,0 +1,11 @@
+we are building a ret api
+
+we will deal with users.
+
+get/users -  lsit all users.
+
+post/users - create a new user.
+
+patch/user/1 - edit the user withid 1
+
+delete/users/1 -> delete the user with id 1;

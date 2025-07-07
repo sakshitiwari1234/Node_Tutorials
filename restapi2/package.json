@@ -1,0 +1,19 @@
+{
+  "name": "restapi2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node test4.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "it is a node js tutorial learning to become backend developer.",
+  "dependencies": {
+    "express": "^4.21.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.13.1",
+    "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  }
+}

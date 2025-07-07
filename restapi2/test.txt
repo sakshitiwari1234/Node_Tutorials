@@ -1,0 +1,7 @@
+mongoose is a tool or framework which is requirred to connect mongodb database to our our node.js.
+
+
+
+Schema defone the structure 
+shcema is model  , using the mdoel we perform the crud operations.
+

@@ -13,7 +13,7 @@ const fs = require("fs");
 
 
 const server = http.createServer((req , res) => {
-    console.log(req.url , req.headers , req.methods);
+    console.log(req.url , req.methods);
 
 
 
@@ -41,6 +41,21 @@ const server = http.createServer((req , res) => {
 
     } else if(req.url.toLowerCase() === "/submit_details" && req.method ==="POST")
         {
+
+            
+            // reading the chunks that is reading the data sent by server from client.
+            const body = [];
+            req.on('data', (chunk)=>{
+                console.log(chunk);
+                body.push(chunk);
+            });
+            // now this chunk will print the data sent in form , as a buffer. therefore we are converting the dta in buffer to read it in human language.
+            
+            // making another event when all data has been come.
+            req.on('end' , ()=>{
+                const fullBody = Buffer.concat(body).toString();
+                console.log(fullBody);
+            })
             fs.writeFileSync('user.txt', "Sakshiiiii Tiwari");
             res.statusCode = 302;
             res.setHeader('Location', '/');

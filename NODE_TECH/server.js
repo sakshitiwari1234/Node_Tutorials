@@ -12,7 +12,7 @@ const fs = require("fs");
 // http.createServer(server);
 
 
-const server = http.createServer((req , res) => {
+const userRequestHandler = ((req , res) => {
     console.log(req.url , req.methods);
 
 
@@ -55,8 +55,23 @@ const server = http.createServer((req , res) => {
             req.on('end' , ()=>{
                 const fullBody = Buffer.concat(body).toString();
                 console.log(fullBody);
+                const params = new URLSearchParams(fullBody);
+                // const BodyObject = {}; 
+                
+                // for (const [key , val] of params.entries()){
+                //     BodyObject[key] = val;
+
+                // }
+                const BodyObject = Object.fromEntries(params);
+                console.log(BodyObject);
+                fs.writeFileSync('user.txt',JSON.stringify(BodyObject) );
+
+
+
             })
-            fs.writeFileSync('user.txt', "Sakshiiiii Tiwari");
+
+            // Parsing the full body to decode the data we have got.
+
             res.statusCode = 302;
             res.setHeader('Location', '/');
             return res.end();
@@ -83,11 +98,12 @@ const server = http.createServer((req , res) => {
     }
 });
 
-const PORT = 3000;
-server.listen(PORT , ()=> {
-    console.log(`server running at http://localhost:${PORT}`);
-}); 
 
+module.exports = userRequestHandler;
+
+
+
+//this is called as making our own modules - by creating server on main file and making modules files for different work related task , different handlers.
 
 
 

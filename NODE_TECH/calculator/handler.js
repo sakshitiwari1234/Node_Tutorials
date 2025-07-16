@@ -1,3 +1,6 @@
+const {sumRequestHandler} = require('./sum');
+//curly braces mean that we are destructuring the imported handler.
+
 const userRequestHandler = (req, res) => {
     console.log(req.url, req.method);
     if (req.url === '/') 
@@ -9,6 +12,7 @@ const userRequestHandler = (req, res) => {
         res.write("<h1> Hi wonderful Peoples");
         res.write('<br>');
         res.write('<h1>Welcome </h1>');
+        
         res.write("<a href='/calculator'> Go To Calculaotro by clicleking here</a>");
 
         // res.write();
@@ -18,34 +22,33 @@ const userRequestHandler = (req, res) => {
 
         return res.end();
 
+}  else if (req.url.toLowerCase()=== "/result" && req.method === "POST"){
+   
+    return sumRequestHandler(req,res);
+
+}
+ else if (req.url.toLowerCase() === '/calculator'){
+        // res.setHeader('Content-Type', 'text/html');
+       res.write('<html>');
+    res.write('<head>');
+    res.write('<title>Calculator</title>');
+    res.write('</head>');
+    res.write('<body>');
+    res.write('<h1>Welcome to Calculator</h1>');
+    res.write('<form action="/result" method="POST">');
+    res.write('<input type="number" name="num1" placeholder="Enter first number" required><br><br>');
+    res.write('<input type="number" name="num2" placeholder="Enter second number" required><br><br>');
+    res.write('<button type="submit">Calculate</button>');
+    res.write('</form>');
+    res.write('</body>');
+    res.write('</html>');
 
 
-    } else if (req.url.toLowerCase() === '/calculator'){
-         res.setHeader('Content-Type', 'text/html');
-        res.write("<html>");
-        res.write('<head> <title>Practising my way</title></head> ');
-        res.write('<body> ');
-        res.write("<h1> Hi wonderful Peoples");
-        
-        // res.write();
-
-
-
-
-        // dfgnflsfldsflsfjsdlfjlsfxvxv
-
-        res.write("Here is the calculator");
-        res.write("form  action = '/result'");
-        res.write("<input type = 'text' placeholder = 'FirstNum' name ='first'> firstnumber </input>");
-        res.write("<input type = 'text' placeholder = SecondNum' name ='second'> secondnum </input>");
-        res.write("</form>");
-        res.write('</body>');
-        res.write("<h1> Hello World </h1>");
-        res.write("</html>");
         
         
+        res.end();
     }
-
+    else {
     res.setHeader('Content-Type', 'text/html');
         res.write(`
     <html>
@@ -58,7 +61,9 @@ const userRequestHandler = (req, res) => {
     </html> ` );
 
     res.end();
+        }
 }
+
        
 
 
